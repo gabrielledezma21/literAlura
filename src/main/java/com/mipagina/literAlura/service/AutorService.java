@@ -60,4 +60,31 @@ public class AutorService {
         return auRepo.findByNombre(d.nombre());
     }
 
+    public void listarAutorPorNombre() {
+        System.out.println("Ingrese el nombre del autor: ");
+        String nombre = teclado.nextLine();
+        var autor = auRepo.findByNombreContainsIgnoreCase(nombre);
+        if(autor.isPresent()){
+            Autor a = autor.get();
+            System.out.println(a.toString());
+        } else {
+            System.out.println("No hay autores registrados con ese nombre.");
+        }
+    }
+
+    public void buscarAutorEnEpoca() {
+        System.out.println("Ingrese el primer año de la época de la cual desea saber los autores vivos: ");
+        Integer num1 = teclado.nextInt();
+        teclado.nextLine();
+        System.out.println("Ingrese el último año de la época de la cual desea saber los autores vivos: ");
+        Integer num2 = teclado.nextInt();
+        teclado.nextLine();
+        List<Autor> autores = auRepo.buscarAutorEnEpoca(num1,num2);
+        if(!autores.isEmpty()){
+            autores.stream()
+                    .forEach(autor -> System.out.println(autor.toString()));
+        } else {
+            System.out.println("No hay autores registrados que hayan estado vivos en esa época.");
+        }
+    }
 }

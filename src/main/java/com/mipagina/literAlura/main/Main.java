@@ -43,6 +43,9 @@ public class Main {
                     4 - Listar autores registrados
                     5 - Listar autores vivos en un determinado año
                     6 - Listar libros por idioma
+                    7 - Top 10 libros más descargados
+                    8 - Buscar autor por nombre
+                    9 - Buscar autores que vivieron en una época
                     0 - Salir
                     
                     """;
@@ -58,6 +61,9 @@ public class Main {
             case 4 -> auServ.listarAutores();
             case 5 -> auServ.listarAutoresVivosEnAnio();
             case 6 -> libServ.listarLibrosEnIdioma();
+            case 7 -> libServ.top10LibrosMasDescargados();
+            case 8 -> auServ.listarAutorPorNombre();
+            case 9 -> auServ.buscarAutorEnEpoca();
             default -> System.out.println("Opcion inválida");
         };
     }

@@ -113,4 +113,13 @@ public class LibroService {
         }
     }
 
+    public void top10LibrosMasDescargados() {
+        List<Libro> libros = libRepo.findTop10ByOrderByCantidadDeDescargasDesc();
+        if(!libros.isEmpty()){
+            libros.stream()
+                    .forEach(libro -> System.out.println(libro.toString()));
+        } else {
+            System.out.println("No hay libros registrados.");
+        }
+    }
 }
